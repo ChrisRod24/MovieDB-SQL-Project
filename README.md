@@ -84,47 +84,39 @@ SELECT Movies.Title, Actors.ActorName
 FROM Movies
 INNER JOIN Actors ON Movies.ActorID = Actors.ActorID;
 
-Example Output
+## Example Output
 The queries will return results like:
 - Total number of movies in the database.
 - Average rating per genre.
 - The highest-rated movie in each genre.
 - Movie titles with their associated actors.
 
-Example of SELECT * FROM Movies;: 
-+---------+----------------------------+---------+-------------+--------+
+### Example of `SELECT * FROM Movies;`:
 | MovieID | Title                      | Genre   | ReleaseYear | Rating |
-+---------+----------------------------+---------+-------------+--------+
-|       1 | The Shawshank Redemption    | Drama   |        1994 |    9.3 |
-|       2 | The Dark Knight             | Action  |        2008 |    9.0 |
-|       3 | Inception                   | Sci-Fi  |        2010 |    8.8 |
-|       4 | The Matrix                  | Sci-Fi  |        1999 |    8.7 |
-+---------+----------------------------+---------+-------------+--------+
+|---------|----------------------------|---------|-------------|--------|
+| 1       | The Shawshank Redemption    | Drama   | 1994        | 9.3    |
+| 2       | The Dark Knight             | Action  | 2008        | 9.0    |
+| 3       | Inception                   | Sci-Fi  | 2010        | 8.8    |
+| 4       | The Matrix                  | Sci-Fi  | 1999        | 8.7    |
 
-Example of SELECT Genre, AVG(Rating) FROM Movies GROUP BY Genre;:
-+-------------+--------------+
-| Genre       | AVG(Rating)  |
-+-------------+--------------+
-| Drama       |       9.15   |
-| Action      |       9.00   |
-| Sci-Fi      |       8.75   |
-+-------------+--------------+
+### Example of `SELECT Genre, AVG(Rating) FROM Movies GROUP BY Genre;`:
+| Genre   | AVG(Rating) |
+|---------|-------------|
+| Drama   | 9.15        |
+| Action  | 9.0         |
+| Sci-Fi  | 8.75        |
 
-Example of SELECT Genre, Title, Rating FROM Movies WHERE Rating = (SELECT MAX(Rating) FROM Movies WHERE Genre = Movies.Genre);:
-+-------------+----------------------------+--------+
-| Genre       | Title                      | Rating |
-+-------------+----------------------------+--------+
-| Drama       | The Shawshank Redemption    |    9.3 |
-| Action      | The Dark Knight             |    9.0 |
-| Sci-Fi      | Inception                   |    8.8 |
-+-------------+----------------------------+--------+
+### Example of `SELECT Genre, Title, Rating FROM Movies WHERE Rating = (SELECT MAX(Rating) FROM Movies WHERE Genre = Movies.Genre);`:
+| Genre   | Title                      | Rating |
+|---------|----------------------------|--------|
+| Drama   | The Shawshank Redemption    | 9.3    |
+| Action  | The Dark Knight             | 9.0    |
+| Sci-Fi  | Inception                   | 8.8    |
 
-Example of SELECT Movies.Title, Actors.ActorName FROM Movies INNER JOIN Actors ON Movies.ActorID = Actors.ActorID;:
-+----------------------------+----------------------+
+### Example of `SELECT Movies.Title, Actors.ActorName FROM Movies INNER JOIN Actors ON Movies.ActorID = Actors.ActorID;`:
 | Title                      | ActorName            |
-+----------------------------+----------------------+
+|----------------------------|----------------------|
 | The Shawshank Redemption    | Morgan Freeman       |
 | The Dark Knight             | Christian Bale       |
 | Inception                   | Leonardo DiCaprio    |
 | The Matrix                  | Keanu Reeves         |
-+----------------------------+----------------------+
